@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import { debounceTime, Observable } from 'rxjs';
+import { debounceTime, Observable, Subject } from 'rxjs';
 import { Product } from '../../models/product';
 import { CommonModule } from '@angular/common';
 import { ModalProductDetailComponent } from '../../components/modal-product-detail/modal-product-detail.component';
@@ -17,14 +17,21 @@ export class ProductListPage {
   selectedProductId: number = 1;
   showModal: boolean = false;
   showSuccessMessage: boolean = false;
+  search$ = new Subject<string>();
 
-  constructor(private productService: ProductService) {
-    // this.products$ = this.productService.getProducts().pipe(data => data.products);
-  }
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data: any) => {
       this.products = data.products;
+    });
+
+    this.search$.pipe(
+      debounceTime(400)
+    ).subscribe((query) => {
+      this.productService.getProductsBySearch(query).subscribe((data: any) => {
+        this.products = data.products;
+      });
     });
   }
 
@@ -38,10 +45,7 @@ export class ProductListPage {
   }
 
   onSearchInput(event: any) {
-    this.productService.getProductsBySearch(event.target.value).pipe(
-      debounceTime(500)
-    ).subscribe((data: any) => {
-      this.products = data.products;
-    });
+    const query = event.target.value;
+    this.search$.next(query);
   }
 }
