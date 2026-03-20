@@ -1,44 +1,83 @@
-# TestApp
+# Test App - Catálogo de Productos
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.3.
+Prueba técnica para visualizar, buscar y filtrar un catálogo de productos. Consume datos de la API pública [DummyJSON](https://dummyjson.com/).
 
-## Development server
+## 🚀 Instalación y Ejecución
 
-To start a local development server, run:
+### Requisitos previos
+- Node.js 18+ 
+- npm 11.9.0+
+
+### Pasos de instalación
 
 ```bash
+# 1. Instalar dependencias
+npm install
+
+# 2. Iniciar servidor de desarrollo
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+La aplicación estará disponible en `http://localhost:4200/`
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Crear una build de producción
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Los artefactos de compilación se guardarán en el directorio `dist/`.
 
-## Running unit tests
+## 🏗️ Arquitectura
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Stack de Tecnologías
+- **Framework**: Angular 21.2 (Standalone Components)
+- **Lenguaje**: TypeScript 5.9
+- **Routing**: Standalone Routes
+- **Testing**: Vitest
+- **Styling**: SCSS, Bulma
+
+### Estructura del Proyecto
+
+```
+src/app/
+├── pages/                     # Páginas de la aplicación
+│   └── product-list/          # Listado principal de productos
+├── components/                # Componentes reutilizables
+│   └── modal-product-detail/  # Modal para detalles del producto
+├── services/                  # Servicios (inyección de dependencias)
+│   └── product.service.ts     # API de productos
+├── models/                    # Modelos TypeScript
+│   ├── product.ts
+│   └── category.ts
+├── app.ts                     # Componente raíz
+├── app.routes.ts              # Rutas de la aplicación
+└── app.config.ts              # Configuración de Angular
+```
+
+## ✅ Qué está completado
+
+- ✓ Listado de productos con paginación limit y skip por defecto
+- ✓ Búsqueda en tiempo real (con debounce)
+- ✓ Filtrado por categoría
+- ✓ Modal para detalles del producto
+- ✓ Consumo de API REST (GET, PATCH)
+- ✓ Actualización de title, description del producto
+- ✓ Tipado TypeScript en servicios
+- ✓ Manejo de errores o éxito al editar (con notificación)
+- ✓ Colores para los badges de status
+
+## ❌ Qué NO está completado
+
+- ✗ Paginación configurable
+- ✗ Ordenamiento por columna con sortBy y order
+- ✗ Estado de carga mientras llegan los datos
+- ✗ Estado vacío cuando no hay resultados
+- ✗ Validación de formularios
+- ✗ Tests unitarios (sin implementación)
+- ✗ Ejercicios Typescript
+
+## 🧪 Ejecutar Tests unitarios
 
 ```bash
 ng test
