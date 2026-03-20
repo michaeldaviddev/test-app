@@ -1,4 +1,5 @@
 <div>
+  <app-modal-product-detail [productId]="selectedProductId" *ngIf="showModal" (close)="closeModal()"></app-modal-product-detail>
   <table class="table">
     <thead>
       <tr>
@@ -16,9 +17,9 @@
     <tbody>
       <tr *ngFor="let product of products">
         <td>
-          <img [src]="product.thumbnail" class="img-thumbnail" alt="Product Image">
+          <img [src]="product.thumbnail" class="image is-128x128" alt="Product Image">
         </td>
-        <td>{{ product.title }}</td>
+        <td><span class="product-name" (click)="openModal(product.id)">{{ product.title }}</span></td>
         <td>{{ product.sku }}</td>
         <td>{{ product.brand }}</td>
         <td>{{ product.category }}</td>
@@ -30,4 +31,6 @@
       </tr>
     </tbody>
   </table>
+
+
 </div>

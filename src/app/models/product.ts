@@ -9,4 +9,6 @@ export interface Product {
   discountPercentage: number;
   stock: number;
   availabilityStatus: string;
+  description: string;
+  tags: string[];
 }
