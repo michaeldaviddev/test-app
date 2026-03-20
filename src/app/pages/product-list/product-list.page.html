@@ -1,0 +1,33 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Thumbnail</th>
+        <th>Product</th>
+        <th>SKU</th>
+        <th>Brand</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Discount</th>
+        <th>Stock</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>
+          <img [src]="product.thumbnail" class="img-thumbnail" alt="Product Image">
+        </td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.sku }}</td>
+        <td>{{ product.brand }}</td>
+        <td>{{ product.category }}</td>
+        <td>${{ product.price.toFixed(2) }}</td>
+        <td>{{ product.discountPercentage }}%</td>
+        <td>{{ product.stock }}</td>
+        <td>{{ product.availabilityStatus }}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
