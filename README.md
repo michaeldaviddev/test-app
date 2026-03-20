@@ -63,6 +63,7 @@ src/app/
 - ✓ Modal para detalles del producto
 - ✓ Consumo de API REST (GET, PATCH)
 - ✓ Actualización de title, description del producto
+- ✓ Uso de formulario reactivos
 - ✓ Tipado TypeScript en servicios
 - ✓ Manejo de errores o éxito al editar (con notificación)
 - ✓ Colores para los badges de status
@@ -74,6 +75,7 @@ src/app/
 - ✗ Estado de carga mientras llegan los datos
 - ✗ Estado vacío cuando no hay resultados
 - ✗ Validación de formularios
+- ✗ Edición de Precios e inventario y galería de imágenes
 - ✗ Tests unitarios (sin implementación)
 - ✗ Ejercicios Typescript
 
