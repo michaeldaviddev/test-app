@@ -6,28 +6,37 @@
       <p class="modal-card-title">{{ product?.title }}</p>
       <button class="delete" aria-label="close" (click)="closeModal()"></button>
     </header>
-    <section class="modal-card-body">
-      <div class="tabs">
-        <ul>
-          <li class="is-active"><a>General Info</a></li>
-          <li><a>Music</a></li>
-          <li><a>Videos</a></li>
-          <li><a>Documents</a></li>
-        </ul>
-      </div>
+    <form [formGroup]="productForm" (ngSubmit)="saveChanges()">
+      <section class="modal-card-body">
+        <div class="tabs">
+          <ul>
+            <li class="is-active"><a>General Info</a></li>
+            <li><a>Pricing & Inventory</a></li>
+            <li><a>Images</a></li>
+          </ul>
+        </div>
 
-      <div>
-        {{product.title}}
-        {{product.description}}
-        {{product.brand}}
-        {{product.tags}}
-      </div>
-    </section>
-    <footer class="modal-card-foot">
-      <div class="buttons">
-        <button class="button is-success">Save changes</button>
-        <button class="button" (click)="closeModal()">Cancel</button>
-      </div>
-    </footer>
+        <div>
+          <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+              <input class="input" type="text" formControlName="title" placeholder="Title">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+              <textarea class="textarea" formControlName="description" placeholder="Textarea"></textarea>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <div class="buttons">
+          <button class="button is-success" type="submit">Save changes</button>
+          <button class="button" (click)="closeModal()">Cancel</button>
+        </div>
+      </footer>
+    </form>
   </div>
 </div>

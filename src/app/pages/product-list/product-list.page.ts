@@ -16,6 +16,7 @@ export class ProductListPage {
   products: Product[] = [];
   selectedProductId: number = 1;
   showModal: boolean = false;
+  showSuccessMessage: boolean = false;
 
   constructor(private productService: ProductService) {
     // this.products$ = this.productService.getProducts().pipe(data => data.products);

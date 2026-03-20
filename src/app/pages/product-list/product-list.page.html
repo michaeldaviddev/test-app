@@ -1,5 +1,9 @@
 <div>
-  <app-modal-product-detail [productId]="selectedProductId" *ngIf="showModal" (close)="closeModal()"></app-modal-product-detail>
+  <app-modal-product-detail [productId]="selectedProductId" *ngIf="showModal" (close)="closeModal()" (success)="showSuccessMessage = true"></app-modal-product-detail>
+  <div class="notification is-success" *ngIf="showSuccessMessage">
+    <button class="delete" (click)="showSuccessMessage = false"></button>
+    Se guardó con éxito
+  </div>
   <table class="table">
     <thead>
       <tr>
