@@ -1,6 +1,13 @@
 <div>
   <input class="input" type="text" placeholder="Search products..." (input)="onSearchInput($event)" />
 
+  <select name="" id="" (change)="onCategoryChange($event)">
+    <option value="">All Categories</option>
+    <option *ngFor="let category of categories" [value]="category.slug">
+      {{ category.name }}
+    </option>
+  </select>
+
   <app-modal-product-detail [productId]="selectedProductId" *ngIf="showModal" (close)="closeModal()" (success)="showSuccessMessage = true"></app-modal-product-detail>
   <div class="notification is-success" *ngIf="showSuccessMessage">
     <button class="delete" (click)="showSuccessMessage = false"></button>

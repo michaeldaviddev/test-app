@@ -4,6 +4,7 @@ import { debounceTime, Observable, Subject } from 'rxjs';
 import { Product } from '../../models/product';
 import { CommonModule } from '@angular/common';
 import { ModalProductDetailComponent } from '../../components/modal-product-detail/modal-product-detail.component';
+import { Category } from '../../models/category';
 
 @Component({
   selector: 'app-product-list',
@@ -14,6 +15,7 @@ import { ModalProductDetailComponent } from '../../components/modal-product-deta
 export class ProductListPage {
   // products$!: Observable<Product[]>;
   products: Product[] = [];
+  categories: Category[] = [];
   selectedProductId: number = 1;
   showModal: boolean = false;
   showSuccessMessage: boolean = false;
@@ -24,6 +26,10 @@ export class ProductListPage {
   ngOnInit(): void {
     this.productService.getProducts().subscribe((data: any) => {
       this.products = data.products;
+    });
+
+    this.productService.getCategories().subscribe((categories) => {
+      this.categories = categories
     });
 
     this.search$.pipe(
@@ -47,5 +53,18 @@ export class ProductListPage {
   onSearchInput(event: any) {
     const query = event.target.value;
     this.search$.next(query);
+  }
+
+  onCategoryChange(event: any) {
+    const category = event.target.value;
+    if (category) {
+      this.productService.getProductsByCategory(category).subscribe((data: any) => {
+        this.products = data.products;
+      });
+    } else {
+      this.productService.getProducts().subscribe((data: any) => {
+        this.products = data.products;
+      });
+    }
   }
 }
