@@ -2,3 +2,21 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+.stock {
+  display: inline-block;
+  padding: 8px 12px;
+}
+
+.in-stock {
+  background-color: #D1EBE3;
+  color: #1A4035;
+}
+.low-stock {
+  background-color: #FEF0C7;
+  color: #7A4F00;
+}
+.out-of-stock {
+  background-color: #FFE4D1;
+  color: #7C3000;
+}

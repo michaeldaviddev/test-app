@@ -39,7 +39,15 @@
         <td>${{ product.price.toFixed(2) }}</td>
         <td>{{ product.discountPercentage }}%</td>
         <td>{{ product.stock }}</td>
-        <td>{{ product.availabilityStatus }}</td>
+        <td>
+          <span [ngClass]="{
+            'stock in-stock': product.availabilityStatus === 'In Stock',
+            'stock low-stock': product.availabilityStatus === 'Low Stock',
+            'stock out-of-stock': product.availabilityStatus === 'Out of Stock'
+          }">
+            {{ product.availabilityStatus }}
+          </span>
+        </td>
       </tr>
     </tbody>
   </table>
