@@ -30,6 +30,16 @@ Los artefactos de compilación se guardarán en el directorio `dist/`.
 
 ## 🏗️ Arquitectura
 
+
+
+**Componentes Standalone**: La aplicación utiliza la arquitectura moderna de Angular con componentes standalone, eliminando la necesidad de NgModules y permitiendo una carga más eficiente y tree-shaking optimizado.
+
+**Separación de Responsabilidades**:
+- **Pages**: Componentes de página que manejan la lógica de navegación y layout
+- **Components**: Componentes reutilizables y presentacionales
+- **Services**: Lógica de negocio y comunicación con APIs
+- **Models**: Definiciones TypeScript para tipado fuerte
+
 ### Stack de Tecnologías
 - **Framework**: Angular 21.2 (Standalone Components)
 - **Lenguaje**: TypeScript 5.9
@@ -75,7 +85,8 @@ src/app/
 - ✗ Estado de carga mientras llegan los datos
 - ✗ Estado vacío cuando no hay resultados
 - ✗ Validación de formularios
-- ✗ Edición de Precios e inventario y galería de imágenes
+- ✗ Edición de Precios e inventario
+- ✗ Galería de imágenes
 - ✗ Tests unitarios (sin implementación)
 - ✗ Ejercicios Typescript
 
