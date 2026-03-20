@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import { Observable } from 'rxjs';
+import { debounceTime, Observable } from 'rxjs';
 import { Product } from '../../models/product';
 import { CommonModule } from '@angular/common';
 import { ModalProductDetailComponent } from '../../components/modal-product-detail/modal-product-detail.component';
@@ -29,12 +29,19 @@ export class ProductListPage {
   }
 
   openModal(productId: number) {
-    console.log('Selected Product ID:', productId);
     this.selectedProductId = productId;
     this.showModal = true;
   }
 
   closeModal() {
     this.showModal = false;
+  }
+
+  onSearchInput(event: any) {
+    this.productService.getProductsBySearch(event.target.value).pipe(
+      debounceTime(500)
+    ).subscribe((data: any) => {
+      this.products = data.products;
+    });
   }
 }

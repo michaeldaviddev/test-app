@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, skip } from 'rxjs';
 import { Product } from '../models/product';
 
 @Injectable({
@@ -15,8 +15,9 @@ export class ProductService {
     return this.http.get<Product[]>(this.apiURL);
   } */
 
-  getProducts() {
-    return this.http.get(this.apiURL);
+  getProducts(limit?: number, skip?: number) {
+    const params = { limit: limit?.toString() ?? '10', skip: skip?.toString() ?? '0' };
+    return this.http.get(this.apiURL, { params });
   }
 
   getProductById(id: number): Observable<Product> {
@@ -25,6 +26,11 @@ export class ProductService {
 
   updateProduct(id: number, productData: Partial<Product>): Observable<Product> {
     return this.http.patch<Product>(`${this.apiURL}/${id}`, productData);
+  }
+
+  getProductsBySearch(query: string, limit?: number, skip?: number) {
+    const params = { q: query, limit: limit?.toString() ?? '10', skip: skip?.toString() ?? '0' };
+    return this.http.get(`${this.apiURL}/search`, { params });
   }
 
 }
